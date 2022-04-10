@@ -16,7 +16,14 @@ class ThemeBuilder {
       _palette = _light;
     }
 
-    return ThemeData.from(colorScheme: _buildColorScheme(_palette));
+    ColorScheme _scheme = _buildColorScheme(_palette);
+
+    return ThemeData.from(colorScheme: _scheme).copyWith(
+      backgroundColor: _scheme.background,
+      appBarTheme: AppBarTheme(
+        backgroundColor: _scheme.background
+      )
+    );
   }
 
 
