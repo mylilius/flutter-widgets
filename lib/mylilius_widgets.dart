@@ -4,7 +4,8 @@ library mylilius_widgets;
 import 'package:flutter/material.dart';
 
 // Direct Exports
-export 'src/buttons/index.dart';
-export 'src/layout/index.dart';
-export 'src/theme/index.dart';
+export 'src/alerts/alerts.dart';
+export 'src/buttons/buttons.dart';
+export 'src/layout/layout.dart';
+export 'src/theme/theme.dart';
 

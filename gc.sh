@@ -16,7 +16,7 @@ gh pr create
 
 gh pr merge
 
-git checkout master
+git checkout development
 
 git pull --no-ff
 
