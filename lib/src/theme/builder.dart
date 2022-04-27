@@ -20,8 +20,21 @@ class ThemeBuilder {
 
     return ThemeData.from(colorScheme: _scheme).copyWith(
       backgroundColor: _scheme.background,
+      primaryColor: _scheme.primary,
       appBarTheme: AppBarTheme(
         backgroundColor: _scheme.background
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                (Set<MaterialState> states) {
+              if (states.contains(MaterialState.pressed)) {
+                return _scheme.secondary;
+              }
+              return _scheme.primary; // Use the component's default.
+            },
+          ),
+        )
       )
     );
   }
@@ -45,7 +58,10 @@ class ThemeBuilder {
   }
 
   Color _buildColor(String _hexColor) {
-    return Color(int.parse(_hexColor.substring(0), radix: 16) + 0xFF000000);
+    if (_hexColor.contains('#')) {
+      _hexColor = _hexColor.replaceAll('#', '');
+    }
+    return Color(int.parse('FF$_hexColor', radix: 16));
   }
 
 }
